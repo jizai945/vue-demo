@@ -77,5 +77,107 @@ yarn serve
 
 
 
+## element
 
+单例的使用:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-button>默认按钮</el-button>
+    <el-button type="primary">主要按钮</el-button>
+    <el-button type="success">成功按钮</el-button>
+    <el-button type="info">信息按钮</el-button>
+    <el-button type="warning">警告按钮</el-button>
+    <el-button type="danger">危险按钮</el-button>
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+      <p>Try Element</p>
+    </el-dialog>
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</html>
+```
+
+
+
+## element-ui在脚手架中使用
+
++ cd到vue项目工程中
+
++ 安装：`npm i element-ui -S`
+
++ 使用： 参考: `[组件 | Element](https://element.eleme.io/#/zh-CN/component/quickstart)`
+
+![](element_ui.png)
+
+
+
++ 引入后运行 `yarn run serve` 会报extra的错误
+
+  解决: 新建 vue.config.js  写入：
+
+  ```js
+  module.exports = {
+      lintOnSave: false
+  }
+  ```
+
+  
+
++ 在 App.vue中就可以使用element-ui， 不过这种方式是全部引用
+
+
+
+## element-ui按需引入
+
+参考：  [组件 | Element](https://element.eleme.io/#/zh-CN/component/quickstart)
+
++ 安装：`cnpm install babel-plugin-component -D`
+
++ 在`babel.config.js`中添加:
+
+  ```js
+  "plugins": [
+      [
+        "component",
+        {
+          "libraryName": "element-ui",
+          "styleLibraryName": "theme-chalk"
+        }
+      ]
+    ]
+  ```
+
++ 在main.js中按需求引入:
+
+```js
+import { Button, Select } from 'element-ui';
+
+Vue.component(Button.name, Button);
+Vue.component(Select.name, Select);
+/* 或写为
+ * Vue.use(Button)
+ * Vue.use(Select)
+ */
+```
 
