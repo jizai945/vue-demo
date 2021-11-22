@@ -181,3 +181,27 @@ Vue.component(Select.name, Select);
  */
 ```
 
+
+
+## vue路由的使用
+
+分前端路由 和 后端路由
+
+前端路由: key (url地址输入的值) -  value(component)
+
+
+
+main.js中引入router
+
+/router/index.js中填写url对应的组件
+
+App.vue中引入:
+
+```html
+<div>
+    <router-link to="/">去home组件</router-link> | 
+    <router-link to="/about">去about组件</router-link>
+    <router-view/>
+</div>
+```
+

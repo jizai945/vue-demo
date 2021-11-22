@@ -6,7 +6,7 @@ import store from './store'
 
 // import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
-import { Button, Select, Radio } from 'element-ui';
+import { Button, Select, Radio, Container, Aside, Header, Main} from 'element-ui';
 Vue.config.productionTip = false
 
 // Vue.use(ElementUI);
@@ -17,6 +17,10 @@ Vue.config.productionTip = false
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Radio)
+Vue.use(Container)
+Vue.use(Aside)
+Vue.use(Header)
+Vue.use(Main)
 new Vue({
   router,
   store,
